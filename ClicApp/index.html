@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+© 2026 Lorena Poza y Ricardo Arranz. Todos los derechos reservados.
+Obra protegida por la normativa de propiedad intelectual. Queda prohibida su copia,
+modificación, distribución o comunicación pública, total o parcial, sin autorización
+expresa y por escrito de sus autores.
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Lorena Poza y Ricardo Arranz">
+  <meta name="copyright" content="© 2026 Lorena Poza y Ricardo Arranz. Todos los derechos reservados.">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El Huerto de Rosi · Aprende a usar el ratón</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B1%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-screen="start">
+
+  <!-- ============ PANTALLA DE INICIO ============ -->
+  <main id="screen-start" class="screen start">
+    <div id="fx-start" class="fx"></div>
+    <div class="hills"></div>
+
+    <div class="start-wrap">
+      <div class="hero">
+        <div id="mascot-start" class="mascot-big" aria-hidden="true"></div>
+        <div id="veg-row" class="veg-row" aria-hidden="true"></div>
+      </div>
+
+      <section class="card start-card">
+        <p class="eyebrow">Un juego para aprender</p>
+        <h1>El Huerto <span>de Rosa</span></h1>
+        <p class="lead">¡Aprende a manejar el <b>ratón</b> jugando!<br>Clic, doble clic, arrastrar, rueda y más.</p>
+
+        <form id="form-start" novalidate autocomplete="off" onsubmit="return false">
+          <label for="in-name">¿Cómo te llamas?</label>
+          <input id="in-name" type="text" maxlength="20" placeholder="Escribe aquí tu nombre" required autocomplete="off" spellcheck="false">
+          <p id="name-error" class="error" role="alert" hidden>¡Escribe tu nombre para poder empezar!</p>
+          <button type="submit" class="btn btn-go">EMPEZAR <span aria-hidden="true">▶</span></button>
+          <button type="button" id="btn-continue" class="btn btn-ghost" hidden>Continuar en el nivel <b>2</b></button>
+        </form>
+      </section>
+    </div>
+
+    <footer class="foot">
+      © <span class="js-fecha">00/00/00</span> · Lorena Poza y Ricardo Arranz · Todos los derechos reservados
+    </footer>
+  </main>
+
+  <!-- ============ PANTALLA DE JUEGO ============ -->
+  <div id="screen-game" class="screen game" hidden>
+    <header class="topbar">
+      <div class="lvl-pill" id="lvl-num">Nivel 1 de 20</div>
+      <div class="dots" id="dots" role="group" aria-label="Niveles"></div>
+      <button type="button" id="btn-sound" class="tool" aria-pressed="false" title="Sonido"><span aria-hidden="true">🔊</span> Sonido: <span class="st">No</span></button>
+      <button type="button" id="btn-cursor" class="tool" aria-pressed="true" title="Tamaño de la flecha"><span aria-hidden="true">🖱️</span> Flecha: <span class="st">Grande</span></button>
+      <button type="button" id="btn-home" class="tool" title="Volver al inicio"><span aria-hidden="true">🏠</span> Inicio</button>
+    </header>
+
+    <div class="play">
+      <aside class="helper" id="sidebar">
+        <div class="hhead">
+          <div id="mascot-help" class="mascot-small" aria-hidden="true"></div>
+          <div><small>Rosi dice:</small><h2 id="lvl-title">…</h2></div>
+        </div>
+        <div class="bubble" id="bubble" aria-live="polite"></div>
+        <div class="mousebox" id="mouse-box" aria-hidden="true"></div>
+        <div class="counter" id="counter" hidden></div>
+        <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+        <button type="button" id="btn-pista" class="btn btn-pista"><span aria-hidden="true">💡</span> Ayúdame</button>
+      </aside>
+
+      <section id="stage" class="stage" aria-label="Zona de juego"></section>
+    </div>
+  </div>
+
+  <!-- ============ PANTALLA FINAL ============ -->
+  <main id="screen-end" class="screen end" hidden>
+    <div class="hills"></div>
+    <div class="end-wrap">
+      <div id="mascot-end" class="mascot-big" aria-hidden="true"></div>
+      <section class="card end-card">
+        <p class="eyebrow">¡Has superado los <span id="end-count">20</span> niveles!</p>
+        <h1>¡Enhorabuena, <span id="end-name"></span>!</h1>
+        <p class="lead">Ya sabes hacer <b>clic</b>, <b>doble clic</b>, <b>arrastrar</b>, <b>seleccionar</b>, mover la <b>rueda</b> y usar el <b>botón derecho</b>.
+          Te has graduado en el manejo del ratón. ¡Ahora puedes usarlo en cualquier ordenador!</p>
+
+        <div class="diploma" id="diploma">
+          <div class="dip-top">🎓 Diploma</div>
+          <div class="dip-line">Se concede a</div>
+          <div class="dip-name" id="dip-name"></div>
+          <div class="dip-line">por dominar el ratón en <b>El Huerto de Rosi</b></div>
+          <div class="dip-meta">Fecha: <span id="dip-date"></span> · Firmado: Rosi, la regadera 💧</div>
+        </div>
+
+        <div class="end-actions">
+          <button type="button" id="btn-restart" class="btn btn-go">VOLVER AL INICIO <span aria-hidden="true">🏠</span></button>
+          <button type="button" id="btn-print" class="btn btn-ghost"><span aria-hidden="true">🖨️</span> Imprimir diploma</button>
+        </div>
+      </section>
+    </div>
+    <footer class="foot">
+     Todos los derechos reservados &copy; Lorena Poza y Ricardo Arranz ·  <span class="js-fecha">00/00/00</span>
+    </footer>
+  </main>
+
+  <!-- ============ VENTANAS MODALES ============ -->
+  <div id="modal-win" class="modal-back" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="win-title">
+      <div id="mascot-win" class="mascot-modal" aria-hidden="true"></div>
+      <h2 id="win-title">¡Muy bien!</h2>
+      <p id="win-text"></p>
+      <button type="button" id="btn-next" class="btn btn-go btn-next">SIGUIENTE NIVEL ➜</button>
+    </div>
+  </div>
+
+  <div id="modal-exit" class="modal-back" hidden>
+    <div class="modal small" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+      <h2 id="exit-title">¿Quieres salir?</h2>
+      <p>Si vuelves al inicio, empezarás de nuevo desde el nivel 1.</p>
+      <div class="end-actions">
+        <button type="button" id="btn-stay" class="btn btn-go">SEGUIR JUGANDO</button>
+        <button type="button" id="btn-leave" class="btn btn-ghost">Salir al inicio</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <noscript><p style="padding:2rem;font:20px sans-serif">Este juego necesita JavaScript activado en el navegador.</p></noscript>
+
+  <script src="js/arte.js"></script>
+  <script src="js/motor.js"></script>
+  <script src="js/niveles.js"></script>
+  <script>CLIC.start();</script>
+</body>
+</html>
